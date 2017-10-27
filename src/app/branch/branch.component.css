@@ -1,0 +1,19 @@
+.branch-form {
+  min-width: 500px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.branch-full-width {
+  width: 100%;
+}
+
+.flipped_front {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
+.flipped_back {
+  -webkit-transform: rotateY(0);
+          transform: rotateY(0);
+}

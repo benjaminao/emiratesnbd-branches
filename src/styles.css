@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+header{
+    background: #06357a;
+    margin: 0 !important;
+}
+body {
+    display: block;
+    margin: 0px;
+}
+.logo-bar {
+    padding: 0;
+    background: url(/assets/images/bg-logo.png) left center repeat-x;
+    clear: both;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 10px;
+    overflow: hidden;
+}

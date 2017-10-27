@@ -1,0 +1,31 @@
+<div [class]="getStyleClass()">
+
+
+<form class="branch-form">
+
+  <mat-form-field class="branch-full-width">
+    <input matInput placeholder="Branch" aria-label="Branch" [matAutocomplete]="auto" [formControl]="branchCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let branch of filteredBranch | async" [value]="branch.branchName">
+        <!-- <img style="vertical-align:middle;" aria-hidden src="{{branch.flag}}" height="25" /> -->
+        <span>{{ branch.branchName }}</span> |
+        <small>Category: {{branch.branchCat}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="branchTypeShow">
+    <mat-select placeholder="Branch type" [(ngModel)]="selectedValue" name="branchType">
+      <mat-option *ngFor="let type of branchType" [value]="type.value">
+        {{type.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br />
+  <button mat-button color="primary" (click)="onRotationButtonClick()">Primary</button>
+
+</form>
+
+
+</div>
