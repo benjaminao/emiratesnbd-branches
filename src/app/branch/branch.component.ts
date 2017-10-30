@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
@@ -11,11 +12,19 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./branch.component.css']
 })
 export class BranchComponent implements OnInit {
+  @Input() showVerticalStepper: Boolean;
+
   branchCtrl: FormControl;
   filteredBranch: Observable<any[]>;
-  @Input() branchTypeShow: Boolean;
 
-  selectedValue: string;
+
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+
+  selectedbranchTypeValue: string;
+  selectedbranchVersionValue: string;
 
   branchType = [
     {value: 'Commercial'},
@@ -24,6 +33,16 @@ export class BranchComponent implements OnInit {
     {value: 'Mall'},
     {value: 'Other'}
   ];
+
+  branchVersion = [
+    {value: 'Digital', name: 'Fully Digital'},
+    {value: 'Digital-Hybrid', name: 'Digital/Hybrid'},
+    {value: 'Hybrid', name: 'Hybrid'},
+    {value: 'Normal-Hybrid', name: 'Normal/Hybrid'},
+    {value: 'Normal', name: 'Normal'}
+  ];
+
+  branchTag = ['Branch Tag 1', 'Branch Tag 2', 'Branch Tag 3', 'Branch Tag 4', 'Branch Tag 5'];
 
   branch: any[] = [
     {
@@ -403,31 +422,8 @@ export class BranchComponent implements OnInit {
     }
 ];
 
-flipped = false;
 
-  onRotationButtonClick(){
-    console.log("this.flipped");
-    console.log(this.flipped);
-    this.flipped = !this.flipped; //<!-- component property controls what side to show
-    console.log("getStyleClass()");
-    console.log(this.getStyleClass());
-  }
-
-  getStyleClass(){
-    if (!this.flipped) {
-      return "flipped_front";
-    } else {
-      return "flipped_back";
-    };
-  }
-
-  keyDownFunction(event) {
-    if(event.keyCode == 13) {
-      alert('you just clicked enter');
-      // rest of your code
-    }
-  }
-  constructor() {
+  constructor(private _formBuilder: FormBuilder) {
 
     this.branchCtrl = new FormControl();
       this.filteredBranch = this.branchCtrl.valueChanges
@@ -442,7 +438,16 @@ flipped = false;
   }
 
   ngOnInit() {
-    this.branchTypeShow = false;
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['', Validators.required]
+    });
+    //this.showVerticalStepper = false;
   }
 
 }

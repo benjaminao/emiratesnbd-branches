@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs/hammer';
 import { MatGridListModule,MatAutocompleteModule,
@@ -22,13 +22,11 @@ import { MatGridListModule,MatAutocompleteModule,
 
 import { AppComponent } from './app.component';
 import { BranchComponent } from './branch/branch.component';
-import { BranchTypeComponent } from './branch-type/branch-type.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BranchComponent,
-    BranchTypeComponent
+    BranchComponent
   ],
   imports: [
     BrowserModule,

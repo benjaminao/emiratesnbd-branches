@@ -1,3 +1,7 @@
 .branch-form{
    top: -400px;
 }
+.logo {
+  position: absolute;
+  left: 5px;
+}

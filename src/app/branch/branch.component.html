@@ -1,31 +1,150 @@
-<div [class]="getStyleClass()">
 
+<mat-horizontal-stepper [linear]="isLinear" *ngIf="!showVerticalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Select the branch {{showVerticalStepper}}</ng-template>
+      <mat-form-field class="branch-full-width">
+        <input matInput placeholder="Branch"  [matAutocomplete]="auto" formControlName="firstCtrl" required>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let branch of filteredBranch | async" [value]="branch.branchName">
+            <span>{{ branch.branchName }}</span> |
+            <small>Category: {{branch.branchCat}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Select the branch type</ng-template>
 
-<form class="branch-form">
+      <mat-form-field >
+        <mat-select placeholder="Branch type" [(ngModel)]="selectedbranchTypeValue" name="branchType" formControlName="secondCtrl" required>
+          <mat-option *ngFor="let type of branchType" [value]="type.value">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <mat-form-field class="branch-full-width">
-    <input matInput placeholder="Branch" aria-label="Branch" [matAutocomplete]="auto" [formControl]="branchCtrl">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let branch of filteredBranch | async" [value]="branch.branchName">
-        <!-- <img style="vertical-align:middle;" aria-hidden src="{{branch.flag}}" height="25" /> -->
-        <span>{{ branch.branchName }}</span> |
-        <small>Category: {{branch.branchCat}}</small>
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Select the branch version</ng-template>
 
-  <mat-form-field *ngIf="branchTypeShow">
-    <mat-select placeholder="Branch type" [(ngModel)]="selectedValue" name="branchType">
-      <mat-option *ngFor="let type of branchType" [value]="type.value">
-        {{type.value}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+      <mat-form-field >
+        <mat-select placeholder="Branch version" [(ngModel)]="selectedbranchVersionValue" name="branchType" formControlName="thirdCtrl" required>
+          <mat-option *ngFor="let version of branchVersion" [value]="version.value">
+            {{version.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <br />
-  <button mat-button color="primary" (click)="onRotationButtonClick()">Primary</button>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Select the branch tag</ng-template>
 
-</form>
+    <mat-selection-list #tags>
+      <mat-list-option *ngFor="let tag of branchTag">
+        {{tag}}
+      </mat-list-option>
+    </mat-selection-list>
 
+    <p>
+    Options selected: {{tags.selectedOptions.selected.length}}
+    </p>
 
-</div>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+<mat-vertical-stepper [linear]="isLinear" *ngIf="showVerticalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Select the branch</ng-template>
+      <mat-form-field class="branch-full-width">
+        <input matInput placeholder="Branch"  [matAutocomplete]="auto" formControlName="firstCtrl" required>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let branch of filteredBranch | async" [value]="branch.branchName">
+            <span>{{ branch.branchName }}</span> |
+            <small>Category: {{branch.branchCat}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Select the branch type</ng-template>
+
+      <mat-form-field >
+        <mat-select placeholder="Branch type" [(ngModel)]="selectedbranchTypeValue" name="branchType" formControlName="secondCtrl" required>
+          <mat-option *ngFor="let type of branchType" [value]="type.value">
+            {{type.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field> -->
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Select the branch version</ng-template>
+
+      <mat-form-field >
+        <mat-select placeholder="Branch version" [(ngModel)]="selectedbranchVersionValue" name="branchType" formControlName="thirdCtrl" required>
+          <mat-option *ngFor="let version of branchVersion" [value]="version.value">
+            {{version.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field> -->
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Select the branch tag</ng-template>
+
+    <mat-selection-list #tags>
+      <mat-list-option *ngFor="let tag of branchTag">
+        {{tag}}
+      </mat-list-option>
+    </mat-selection-list>
+
+    <p>
+    Options selected: {{tags.selectedOptions.selected.length}}
+    </p>
+
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
