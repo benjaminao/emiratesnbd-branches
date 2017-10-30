@@ -3,24 +3,24 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --aot -prod",
-    "start": "node server.js"
+    "deploy": "git push origin master && git push heroku master"
   },
   "engines": {
-  "node": "6.11.2",
-  "npm": "3.10.10"
+    "node": "6.11.2",
+    "npm": "3.10.10"
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "1.4.9",
     "@angular/animations": "^4.4.6",
     "@angular/cdk": "^2.0.0-beta.12",
+    "@angular/cli": "1.4.9",
     "@angular/common": "^4.2.4",
     "@angular/compiler": "^4.2.4",
     "@angular/core": "^4.2.4",
@@ -30,6 +30,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "bower": "^1.8.2",
     "core-js": "^2.4.1",
     "express": "^4.16.2",
     "rxjs": "^5.4.2",
