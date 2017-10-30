@@ -7,7 +7,6 @@ import { Component, trigger, state, style, transition, animate } from '@angular/
   animations: [
     trigger('divBranch', [
       state('one', style({
-        //borderRadius: '250px',
         'background-color': 'white',
         transform: 'translateY(-100px) scale(0.4)'
       })),
