@@ -12,25 +12,30 @@ import { Component, trigger, state, style, transition, animate } from '@angular/
       })),
       state('two', style({
         'background-color': 'white',
-        transform: 'translateY(240px) scale(0.5)'
+        transform: 'translateY(300px) scale(0.5)'
       })),
       state('three', style({
         'background-color': 'white',
-        transform: 'translateY(300px) scale(1)'
+        transform: 'translateY(400px) scale(1)'
       })),
       state('four', style({
         'background-color': 'white',
-        transform: 'translateY(0px) scale(1)'
+        transform: 'translateY(350px) scale(1)'
       })),
+      state('five', style({
+        'background-color': 'white',
+        transform: 'translateY(400px) scale(1)'
+      })),
+
       transition('one => two', [
-        animate(200,style({
+        animate(100,style({
           borderRadius: '200px'
         })),
-        animate(400)
+        animate(300)
       ]),
-      transition('two => three', animate(300)),
-      transition('three => four', animate(300)),
-      transition('four => one', animate(200))
+      transition('two => three', animate(380)),
+      transition('three => four', animate(180)),
+      transition('four => five', animate(200))
     ])
 
 
@@ -47,7 +52,14 @@ export class AppComponent {
   showBranchForm(){
     console.log("showBranchForm");
     this.state == 'one' ? this.state = 'two' : this.state = 'one';
-     setTimeout(() => this.state = 'three', 250);
+     setTimeout(() => {this.state = 'three'
+                      setTimeout(() => {
+                        this.state = 'four'
+                          setTimeout(() => this.state = 'five', 300);
+                      }, 320);
+                    }, 400);
+
+
 
   }
   showBranchNextForm(){
