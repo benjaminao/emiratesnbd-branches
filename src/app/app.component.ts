@@ -1,4 +1,5 @@
 import { Component, trigger, state, style, transition, animate } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-root',
@@ -8,22 +9,27 @@ import { Component, trigger, state, style, transition, animate } from '@angular/
     trigger('divBranch', [
       state('one', style({
         'background-color': 'white',
-        transform: 'translateY(-100px) scale(0.4)'
+        borderRadius: '160px',
+        transform: 'translateY(-100px) scale(0.3)'
       })),
       state('two', style({
         'background-color': 'white',
+        borderRadius: '100px',
         transform: 'translateY(300px) scale(0.6)'
       })),
       state('three', style({
         'background-color': 'white',
+        borderRadius: '20px',
         transform: 'translateY(400px) scale(1)'
       })),
       state('four', style({
         'background-color': 'white',
+        borderRadius: '0px',
         transform: 'translateY(350px) scale(1.2)'
       })),
       state('five', style({
         'background-color': 'white',
+        borderRadius: '0px',
         transform: 'translateY(400px) scale(1)'
       })),
 
@@ -46,8 +52,21 @@ export class AppComponent {
   state = 'one';
   crshowVerticalStepper = false;
   body = { left : 0, center : 12, right : 0, width: 1200 };
+  private backgroundImg: SafeStyle;
+  //backgroundImg = "url(/assets/images/background.jpg) !important";
 
 
+  onChangeBackgraund(){
+    return this.backgroundImg;
+  }
+  onBackgraund(bgSelected){
+    this.state = 'one';
+    setTimeout(() => {
+          this.showBranchForm();
+        }, 300);
+    console.log(bgSelected);
+    this.backgroundImg = this.sanitizer.bypassSecurityTrustStyle('url(/assets/images/background'+bgSelected+'.jpg)');
+  }
 
   showBranchForm(){
     console.log("showBranchForm");
@@ -136,8 +155,9 @@ export class AppComponent {
   }
 
 
-  constructor(){
-    //this.showBranchForm();
+  constructor( private sanitizer:DomSanitizer ){
+
+    this.backgroundImg = sanitizer.bypassSecurityTrustStyle('url(/assets/images/backgroundone.jpg)');
     setTimeout(() => {
           this.showBranchForm();
         }, 300);

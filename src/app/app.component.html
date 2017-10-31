@@ -1,16 +1,36 @@
+<body [style.background-image]="onChangeBackgraund()">
 <header>
   <mat-grid-list cols="12" rowHeight="100px" class="logo-bar">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="11" [rowspan]="1" (click)="showBranchForm()" >
+    <mat-grid-tile [colspan]="11" [rowspan]="1"  >
       <div class="logo">
         <img  align="left" src="/assets/images/emiratesnbd.png" alt="Emirates NBD">
       </div>
+      <!-- <div class="btnBackgraund1">
+          <button mat-mini-fab color="primary" (click)="onBackgraund('one')">One</button>
+
+      </div>
+      <div class="btnBackgraund2">
+          <button mat-mini-fab color="accent" (click)="onBackgraund('two')">Two</button>
+
+      </div> -->
+      <div class="btnBackgraund1">
+
+        <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Brackbgraund</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onBackgraund('one')">Backgraun 1</button>
+          <button mat-menu-item (click)="onBackgraund('two')">Backgraun 2</button>
+          <button mat-menu-item (click)="onBackgraund('three')">Backgraun 3</button>
+          <button mat-menu-item (click)="onBackgraund('four')">Backgraun 4</button>
+          <button mat-menu-item (click)="onBackgraund('five')">Backgraun 5</button>
+        </mat-menu>
+    </div>
     </mat-grid-tile>
   </mat-grid-list>
 </header>
 
-<mat-grid-list cols="12" rowHeight="700px" (window:resize)="onResize($event.currentTarget.self.innerWidth)">
+<mat-grid-list cols="12" rowHeight="900px" (window:resize)="onResize($event.currentTarget.self.innerWidth)">
   <mat-grid-tile [colspan]="body.left" [rowspan]="1" >
   </mat-grid-tile>
 
@@ -33,3 +53,4 @@
   <mat-grid-tile [colspan]="body.right" [rowspan]="1" >
   </mat-grid-tile>
 </mat-grid-list>
+</body>

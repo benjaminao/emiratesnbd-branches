@@ -5,3 +5,14 @@
   position: absolute;
   left: 5px;
 }
+.btnBackgraund1 {
+  position: absolute;
+  left: 80%;
+}
+.btnBackgraund2 {
+  position: absolute;
+  left: 85%;
+}
+body{
+  height: 100%;
+}

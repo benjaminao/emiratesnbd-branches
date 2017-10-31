@@ -9,7 +9,9 @@ header{
 body {
     display: block;
     margin: 0px;
-    background-image: url(/assets/images/background.jpg) !important;
+    background-size: cover;
+
+    /*background-image: url(/assets/images/background.jpg) !important;*/
 }
 .logo-bar {
     padding: 0;
