@@ -4,7 +4,7 @@
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Select the branch </ng-template>
       <mat-form-field class="branch-full-width">
-        <input type="text" placeholder="Branch" matInput formControlName="firstCtrl" [matAutocomplete]="auto"  [(ngModel)]="selectedbranch" required>
+        <input type="text" placeholder="Branch" matInput [formControl]="branchCtrl" [matAutocomplete]="auto"  [(ngModel)]="selectedbranch" required>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let branch of filteredBranch | async" [value]="branch.branchName">
             <span>{{ branch.branchName }}</span> |
