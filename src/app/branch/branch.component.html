@@ -2,9 +2,9 @@
 <mat-horizontal-stepper [linear]="isLinear" *ngIf="!showVerticalStepper">
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Select the branch {{showVerticalStepper}}</ng-template>
+      <ng-template matStepLabel>Select the branch </ng-template>
       <mat-form-field class="branch-full-width">
-        <input matInput placeholder="Branch"  [matAutocomplete]="auto" formControlName="firstCtrl" required>
+        <input type="text" placeholder="Branch" matInput formControlName="firstCtrl" [matAutocomplete]="auto"  [(ngModel)]="selectedbranch" required>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let branch of filteredBranch | async" [value]="branch.branchName">
             <span>{{ branch.branchName }}</span> |
@@ -144,3 +144,10 @@
     </div>
   </mat-step>
 </mat-vertical-stepper>
+
+<div class="">
+  <p>selectedbranch: {{selectedbranch}}</p>
+  <p>selectedbranchVersionValue: {{selectedbranchTypeValue}}</p>
+  <p>selectedbranchVersionValue: {{selectedbranchVersionValue}}</p>
+
+</div>

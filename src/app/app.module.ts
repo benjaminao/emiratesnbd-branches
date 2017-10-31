@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs/hammer';
 import { MatGridListModule,MatAutocompleteModule,
@@ -32,6 +33,7 @@ import { BranchComponent } from './branch/branch.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
