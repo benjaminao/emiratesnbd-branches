@@ -16,12 +16,15 @@
 
   <mat-grid-tile [colspan]="body.center" [rowspan]="1" [style.background]="'white'">
 
+    <!-- <div [@divBranch]="state" class="branch-form" >
+      <app-branch  [showVerticalStepper]="isVerticalStepper()" ></app-branch>
+    </div> -->
     <!-- {{state}} -->
     <mat-card [@divBranch]="state" class="branch-form" >
       <mat-card-content>
 
         <app-branch  [showVerticalStepper]="isVerticalStepper()" ></app-branch>
-        
+
       </mat-card-content>
     </mat-card>
 
