@@ -12,7 +12,7 @@ import { Component, trigger, state, style, transition, animate } from '@angular/
       })),
       state('two', style({
         'background-color': 'white',
-        transform: 'translateY(300px) scale(0.5)'
+        transform: 'translateY(300px) scale(0.6)'
       })),
       state('three', style({
         'background-color': 'white',
@@ -20,7 +20,7 @@ import { Component, trigger, state, style, transition, animate } from '@angular/
       })),
       state('four', style({
         'background-color': 'white',
-        transform: 'translateY(350px) scale(1)'
+        transform: 'translateY(350px) scale(1.2)'
       })),
       state('five', style({
         'background-color': 'white',
@@ -137,9 +137,10 @@ export class AppComponent {
 
 
   constructor(){
+    //this.showBranchForm();
     setTimeout(() => {
           this.showBranchForm();
-        }, 310);
+        }, 300);
     this.onResize(innerWidth);
   }
 
